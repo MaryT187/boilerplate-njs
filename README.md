@@ -11,21 +11,23 @@ Starting point for client sites: Next.js 16 (App Router, TypeScript), React 19, 
 
 You need Node.js 20.9+ (22 recommended) and git.
 
-**1. Download the boilerplate** (first time only). Clone it into the folder where your sites live, e.g. `~/Herd`:
+**1. Download the boilerplate** into the folder where your sites live, e.g. `~/Herd`. Pick one:
 
-```bash
-cd ~/Herd
-git clone https://github.com/MaryT187/boilerplate-njs.git
-```
+- **Download ZIP (simplest, no git link at all).** On GitHub: **Code → Download ZIP**, unzip it into `~/Herd`. Nothing you do in it can reach the boilerplate repository. Download a fresh ZIP each time you start a project, so you always get the latest version.
+- **Clone (if you want `git pull` for updates).** Clone, then switch off pushing from this copy, so nobody can push changes to the boilerplate by accident:
 
-Already have it? Get the latest version instead:
+  ```bash
+  cd ~/Herd
+  git clone https://github.com/MaryT187/boilerplate-njs.git
+  cd boilerplate-njs
+  git remote set-url --push origin no-push
+  ```
 
-```bash
-cd ~/Herd/boilerplate-njs
-git pull
-```
+  To get the latest version later: `git pull` in `~/Herd/boilerplate-njs`. Pushing from it fails with an error, by design.
 
-**2. Run the setup** from the boilerplate folder:
+Either way, the boilerplate is only a template: you never edit or commit in it. Step 2 copies it into a new folder **without** the boilerplate's git history, so the new project can't push to the boilerplate either.
+
+**2. Run the setup** from the boilerplate folder (`boilerplate-njs-main` if you downloaded the ZIP):
 
 ```bash
 cd ~/Herd/boilerplate-njs
