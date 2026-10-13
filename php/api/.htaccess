@@ -1,0 +1,15 @@
+# Only form.php is reachable. Config, form definitions and the mail library are server-side only.
+Options -Indexes
+
+<FilesMatch "^(form-config.*\.php|forms\.json|\.ratelimit.*)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^lib/ - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Cache-Control "no-store"
+</IfModule>
