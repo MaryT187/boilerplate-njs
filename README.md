@@ -9,17 +9,58 @@ Starting point for client sites: Next.js 16 (App Router, TypeScript), React 19, 
 
 ## Starting a new project
 
-From this folder, run:
+You need Node.js 20.9+ (22 recommended) and git.
+
+**1. Download the boilerplate** (first time only). Clone it into the folder where your sites live, e.g. `~/Herd`:
 
 ```bash
+cd ~/Herd
+git clone https://github.com/MaryT187/boilerplate-njs.git
+```
+
+Already have it? Get the latest version instead:
+
+```bash
+cd ~/Herd/boilerplate-njs
+git pull
+```
+
+**2. Run the setup** from the boilerplate folder:
+
+```bash
+cd ~/Herd/boilerplate-njs
 npm run new
 ```
 
-It asks two things, the **project name** and the **hosting**, then creates the project next to this folder (`MySite` becomes `../mysite`) and installs its packages. Or answer up front:
+It asks for the **project name** and the **hosting** (`vercel`, `node` or `php`; see the table below), then creates the project next to the boilerplate (`MySite` becomes `~/Herd/mysite`) and installs its packages. No `npm install` is needed in the boilerplate first. You can also answer up front:
 
 ```bash
 npm run new -- "MySite" vercel
 ```
+
+**3. Start the new project:**
+
+```bash
+cd ~/Herd/mysite
+npm run dev
+```
+
+Open http://localhost:3000.
+
+**4. Put it in its own git repository.** The new project doesn't carry the boilerplate's git history. Create an empty repository on GitHub for it, then:
+
+```bash
+git init
+git add -A
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/<account>/<repo>.git
+git push -u origin main
+```
+
+**5. Make it the client's site.** Work through the [New client checklist](#new-client-checklist): business details, brand colours, logo, nav, content. Then follow [Deploying](#deploying) in the new project's README.
+
+### Hosting options
 
 | Hosting  | Use for                                         | Form handler       | Image optimisation      |
 | -------- | ----------------------------------------------- | ------------------ | ----------------------- |
@@ -28,8 +69,6 @@ npm run new -- "MySite" vercel
 | `php`    | cPanel without Node.js: static HTML + PHP forms | `php/api/form.php` | No: upload sized images |
 
 The new project gets the name in `package.json`, `src/lib/site.ts` and its README, a `.env.local`, and only what its hosting needs: Vercel and Node projects have no `php/` folder, and each keeps only its own build scripts and README sections. Nothing here is changed, so the boilerplate stays reusable. Options: `--dir <path>` to create it somewhere else, `--skip-install` to skip `npm install`.
-
-Then `cd ../mysite && npm run dev` and work through the [New client checklist](#new-client-checklist).
 
 The rest of this README is what each new project gets (trimmed to its hosting).
 <!-- /boilerplate -->
